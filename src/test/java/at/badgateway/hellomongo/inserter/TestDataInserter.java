@@ -22,9 +22,9 @@ public class TestDataInserter {
 
 	@Test
 	public void dataInserter() {
-		Collection<User> allUsers = new ArrayList<>();
+		Collection<User> allUsers = new ArrayList<User>();
 
-		for (int i = 0; i < 10000; i++) {
+		for (int i = 0; i < 100; i++) {
 			allUsers.add(createUser(i));
 		}
 
