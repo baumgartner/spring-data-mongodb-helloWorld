@@ -2,10 +2,9 @@ package at.badgateway.hellomongo.domain;
 
 import java.util.Set;
 
-import org.joda.time.DateTime;
-import org.springframework.data.annotation.CreatedDate;
-
 import lombok.Data;
+
+import org.springframework.data.annotation.CreatedDate;
 
 @Data
 public class User {
@@ -16,5 +15,5 @@ public class User {
 	private Set<String> tags;
 	
 	@CreatedDate
-	private DateTime created; 
+	private Long created; 
 }

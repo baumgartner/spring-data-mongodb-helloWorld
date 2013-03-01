@@ -57,4 +57,13 @@
 			<url>http://repo.springsource.org/libs-release</url>
 		</repository>
 	</repositories>
+	<!-- <dependencyManagement> -->
+	<!-- <dependencies> -->
+	<!-- <dependency> -->
+	<!-- <groupId>org.springframework</groupId> -->
+	<!-- <artifactId>spring-core</artifactId> -->
+	<!-- <version>3.1.4.RELEASE</version> -->
+	<!-- </dependency> -->
+	<!-- </dependencies> -->
+	<!-- </dependencyManagement> -->
 </project>
