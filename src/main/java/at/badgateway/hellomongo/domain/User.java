@@ -1,5 +1,7 @@
 package at.badgateway.hellomongo.domain;
 
+import java.util.Set;
+
 import lombok.Data;
 
 @Data
@@ -8,4 +10,5 @@ public class User {
 	private String lastname;
 	private byte[] image;
 
+	private Set<String> tags;
 }
