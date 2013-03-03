@@ -6,10 +6,10 @@
 	<mongo:mongo />
 	<mongo:db-factory dbname="helloWorld" />
 	<mongo:repositories base-package="at.badgateway.hellomongo.repository" />
-	<mongo:auditing mapping-context-ref="customMappingContext" />
+	<mongo:auditing/>
 
-	<bean id="customMappingContext"
-		class="org.springframework.data.mongodb.core.mapping.MongoMappingContext" />
+<!-- 	<bean id="customMappingContext" -->
+<!-- 		class="org.springframework.data.mongodb.core.mapping.MongoMappingContext" /> -->
 		
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
