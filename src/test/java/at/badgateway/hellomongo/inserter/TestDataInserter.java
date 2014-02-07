@@ -6,7 +6,12 @@ import java.util.HashSet;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -16,9 +21,11 @@ import at.badgateway.hellomongo.repository.UserRepository;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:context.xml" })
 public class TestDataInserter {
+	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	@Autowired
-	private UserRepository userRepository;
+	@Autowired private UserRepository userRepository;
+
+	@Autowired private MongoTemplate mongoTemplate;
 
 	@Test
 	public void dataInserter() {
@@ -43,5 +50,15 @@ public class TestDataInserter {
 		user.getTags().add("mayerTag" + i % 20);
 
 		return user;
+	}
+
+	@Test
+	public void testQueryByObjectId() {
+		User user = createUser(3);
+		userRepository.save(user);
+		
+		Query query = new Query(new Criteria("_id").is(user.getId()));
+		User user2 = mongoTemplate.findOne(query, User.class, "user");
+		logger.info("user: {}", user2);
 	}
 }
